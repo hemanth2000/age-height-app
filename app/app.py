@@ -19,12 +19,12 @@ def hello_world():
     else:
         text=request.form['text']
         random_string=uuid.uuid4().hex
-        path='static/'+random_string+'.svg'
+        path='app/static/'+random_string+'.svg'
         input_np_arr=floats_string_to_np_arr(text)
-        model=load("model.joblib")
-        make_picture('AgesAndHeights.pkl',model,input_np_arr,path)
+        model=load("app/model.joblib")
+        make_picture('app/AgesAndHeights.pkl',model,input_np_arr,path)
 
-        return render_template("index.html",href=path)
+        return render_template("index.html",href=path[4:])
     
 def is_float(s):
   
